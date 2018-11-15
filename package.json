@@ -15,7 +15,9 @@
     "Node.js",
     "Express.js",
     "Redis",
-    "MongoDB"
+    "MongoDB",
+    "Mocha",
+    "Chai"
   ],
   "author": "Rodrigo Campero Gonçalves",
   "license": "MIT",
