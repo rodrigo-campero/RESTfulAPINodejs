@@ -4,14 +4,6 @@ node_js:
 branches:
   except:
   - master
-before_script:
-  - node --version
-  - npm --version
 cache:
   directories:
     - "node_modules"
-install:
-  - npm install body-parser config express mongoose morgan redis --save
-  - npm install chai chai-http mocha nock nodemon --save-dev
-script:
-  npm test

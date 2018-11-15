@@ -4,7 +4,7 @@ let app = express();
 let mongoose = require('mongoose');
 let morgan = require('morgan');
 let bodyParser = require('body-parser');
-let port = 3000;
+let port = 8080;
 let client = require('./app/routes/client');
 let config = require('config');
 
