@@ -20,14 +20,24 @@ describe('Clients', () => {
 
   describe('/GET client', () => {
     it('it should GET all the clients', (done) => {
-      chai.request(server)
-        .get('/client')
-        .end((err, res) => {
-          res.should.have.status(200);
-          res.body.should.be.a('array');
-          res.body.length.should.be.eql(0);
-          done();
-        });
+      let client = new Client({
+        firstName: "rodrigo",
+        lastName: "campero",
+        password: "123456",
+        email: "rodrigocampero.it@gmail.com",
+        age: 18
+      });
+      client.save((err, client) => {
+        chai.request(server)
+          .get('/client')
+          .end((err, res) => {
+            console.log(JSON.stringify(res.body));
+            res.should.have.status(200);
+            res.body.should.be.a('array');
+            res.body.length.should.be.eql(1);
+            done();
+          });
+      });
     });
   });
 
@@ -38,7 +48,7 @@ describe('Clients', () => {
         lastName: "campero",
         password: "123456",
         email: "rodrigocampero.it@gmail.com",
-        age: "18"
+        age: 18
       }
       chai.request(server)
         .post('/client')
@@ -64,12 +74,11 @@ describe('Clients', () => {
         lastName: "campero",
         password: "123456",
         email: "rodrigocampero.it@gmail.com",
-        age: "18"
+        age: 18
       });
       client.save((err, client) => {
         chai.request(server)
           .get('/client/' + client.id)
-          .send(client)
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a('object');
@@ -82,7 +91,6 @@ describe('Clients', () => {
             done();
           });
       });
-
     });
   });
 
@@ -93,7 +101,7 @@ describe('Clients', () => {
         lastName: "campero",
         password: "123456",
         email: "rodrigocampero.it@gmail.com",
-        age: "18"
+        age: 18
       })
       client.save((err, client) => {
         chai.request(server)
@@ -103,7 +111,7 @@ describe('Clients', () => {
             lastName: "campero",
             password: "123456",
             email: "rodrigocampero.it@gmail.com",
-            age: "18"
+            age: 20
           })
           .end((err, res) => {
             res.should.have.status(200);
@@ -113,7 +121,7 @@ describe('Clients', () => {
             res.body.client.should.have.property('lastName');
             res.body.client.should.have.property('password');
             res.body.client.should.have.property('email');
-            res.body.client.should.have.property('age');
+            res.body.client.should.have.property('age').eql(20);
             done();
           });
       });
@@ -127,7 +135,7 @@ describe('Clients', () => {
         lastName: "campero",
         password: "123456",
         email: "rodrigocampero.it@gmail.com",
-        age: "18"
+        age: 18
       })
       client.save((err, client) => {
         chai.request(server)
