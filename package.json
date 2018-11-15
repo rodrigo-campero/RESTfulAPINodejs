@@ -1,0 +1,41 @@
+{
+  "name": "restfulapinodejs",
+  "version": "1.0.0",
+  "description": "A simple REST API with NodeJS and Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "SET NODE_ENV=dev && nodemon server.js",
+    "test": "mocha --timeout 10000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodrigo-campero/RESTfulAPINodejs.git"
+  },
+  "keywords": [
+    "Node.js",
+    "Express.js",
+    "Redis",
+    "MongoDB"
+  ],
+  "author": "Rodrigo Campero Gonçalves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rodrigo-campero/RESTfulAPINodejs/issues"
+  },
+  "homepage": "https://github.com/rodrigo-campero/RESTfulAPINodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "config": "^2.0.1",
+    "express": "^4.16.4",
+    "mongoose": "^5.3.11",
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.2",
+    "nodemon": "^1.18.6"
+  }
+}
