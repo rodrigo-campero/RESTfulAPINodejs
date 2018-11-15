@@ -1,3 +1,9 @@
 language: node_js
 node_js: 
-  - "10"
+  - "stable"
+branches:
+  except:
+  - master
+cache:
+  directories:
+    - "node_modules"

@@ -31,7 +31,6 @@ describe('Clients', () => {
         chai.request(server)
           .get('/client')
           .end((err, res) => {
-            console.log(JSON.stringify(res.body));
             res.should.have.status(200);
             res.body.should.be.a('array');
             res.body.length.should.be.eql(1);
