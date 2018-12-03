@@ -10,7 +10,7 @@ function getClients(req, res) {
 }
 
 function postClient(req, res) {
-    var newClient = new Client(req.body);
+    var newClient = new Client(JSON.parse(req.body));
     newClient.save((err, client) => {
         if (err) {
             res.send(err);
@@ -37,7 +37,7 @@ function deleteClient(req, res) {
 function updateClient(req, res) {
     Client.findById({ _id: req.params.id }, (err, client) => {
         if (err) res.send(err);
-        Object.assign(client, req.body).save((err, client) => {
+        Object.assign(client, JSON.parse(req.body)).save((err, client) => {
             if (err) res.send(err);
             res.json({ message: 'Client updated!', client });
         });
